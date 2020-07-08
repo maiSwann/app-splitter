@@ -19,9 +19,11 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = (segue.destination as! UINavigationController).topViewController as! ImagePresentationVC
+                controller.image = imagesArray[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true            }
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
 
@@ -42,6 +44,13 @@ class MasterViewController: UITableViewController {
         cell.backgroundColor = colorsArray[indexPath.row]
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (tableView.frame.height - 50) / (CGFloat(imagesArray.count))
+    }
 }
 
