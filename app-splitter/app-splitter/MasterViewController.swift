@@ -12,6 +12,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = " "
     }
     
     // MARK: - Segues
