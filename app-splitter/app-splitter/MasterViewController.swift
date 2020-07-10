@@ -9,7 +9,7 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = " "
@@ -51,7 +51,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (tableView.frame.height - 50) / (CGFloat(imagesArray.count))
+        return (tableView.frame.height - (self.navigationController?.navigationBar.frame.height)!) / (CGFloat(imagesArray.count))
     }
 }
 
